@@ -55,6 +55,16 @@
         background-image: url('https://firebasestorage.googleapis.com/v0/b/hbc-website-8b832.firebasestorage.app/o/Slider%2FMobile%2FAnchored%20at%20Home%20(Mobile%20).jpg?alt=media&token=8ce18559-f60e-4929-8ba0-f57ea44c94fe');
       }
     }
+
+    .slide-4 {
+      background-image: url("https://firebasestorage.googleapis.com/v0/b/hbc-website-8b832.firebasestorage.app/o/Slider%2FDesktop%2FFall%20Family%20Festival%202025%20(1920%20x%201080%20px).jpg?alt=media&token=29c2bdd1-8792-4363-ad00-ce8ce2c273bc");
+    }
+
+    @media (max-width: 768px) {
+      .slide-4 {
+        background-image: url('https://firebasestorage.googleapis.com/v0/b/hbc-website-8b832.firebasestorage.app/o/Slider%2FMobile%2FAnchored%20at%20Home%20(Mobile%20Video).jpg?alt=media&token=60815ac2-d096-4e44-b603-25d2b54862e8');
+      }
+    }
     
     .bg-video.desktop, .bg-video.mobile {
       position: absolute;
@@ -304,8 +314,21 @@ text-align:center;
             </div>
             <div class="button-group">
   
-              <a href="https://hbcredmond.churchcenter.com/calendar/event/178800836" class="btn-primary" id="watchBtn1" target="_blank">More Info</a>
+              <a href="https://hbcredmond.churchcenter.com/calendar/event/199773838" class="btn-primary" id="watchBtn1" target="_blank">More Info</a>
             <!-- for disabling buttons disabled style="opacity: 0.5; pointer-events: none;-->
+            </div>
+          </div>
+        </li>
+          <li class="glide__slide slide-4">
+          <div class="overlay">
+               <div class="text-block">
+           <h1>Join Us</h1>
+            </div>
+            <div class="button-group">
+  
+              <a href="https://hbcredmond.churchcenter.com/calendar/event/178800836" class="btn-primary" id="watchBtn1" target="_blank">More Info</a>
+           <a href="https://hbcredmond.churchcenter.com/registrations/events/3158530" class="btn-outline" target="_blank">Volunteer to Help →</a>
+              <!-- for disabling buttons disabled style="opacity: 0.5; pointer-events: none;-->
             </div>
           </div>
         </li>
@@ -318,6 +341,7 @@ text-align:center;
       <button class="glide__bullet" data-glide-dir="=0"></button>
       <button class="glide__bullet" data-glide-dir="=1"></button>
      <button class="glide__bullet" data-glide-dir="=2"></button>
+       <button class="glide__bullet" data-glide-dir="=3"></button>
     </div>
 
     <div class="glide__arrows" data-glide-el="controls">
