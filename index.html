@@ -7,266 +7,337 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.6.0/dist/css/glide.core.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.6.0/dist/css/glide.theme.min.css" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    /* =========================================================
+   GLOBAL RESET + BASE
+   ========================================================= */
+* {
+  box-sizing: border-box;
+}
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Helvetica Neue', sans-serif;
-      background: #000;
-      color: white;
-      overflow-x: hidden;
-    }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background: #000;
+  color: white;
+  overflow-x: hidden;
+}
 
-    .glide {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-    }
+/* =========================================================
+   GLIDE SLIDER BASE
+   ========================================================= */
+.glide {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
 
-    .glide__slide {
-      width: 100vw;
-      height: 100vh;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      position: relative;
-    }
+.glide__slide {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+}
 
-    .slide-2 {
-      background-image: url('https://firebasestorage.googleapis.com/v0/b/hbc-website-8b832.firebasestorage.app/o/Slider%2FDesktop%2FChristmas%202025.jpg?alt=media&token=3999470b-49a7-4105-949a-291fbbe7eb3d');
-    }
+/* =========================================================
+   SLIDE BACKGROUNDS
+   ========================================================= */
+.slide-2 {
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/hbc-website-8b832.firebasestorage.app/o/Slider%2FDesktop%2FChristmas%202025.jpg?alt=media&token=3999470b-49a7-4105-949a-291fbbe7eb3d');
+}
 
-    @media (max-width: 768px) {
-      .slide-2 {
-        background-image: url('https://firebasestorage.googleapis.com/v0/b/hbc-website-8b832.firebasestorage.app/o/Slider%2FMobile%2FAnchored%20at%20Home%20(Mobile%20Video)%20(1).jpg?alt=media&token=79847a2f-d0a8-4c66-867d-06938d3c0997');
-      }
-    }
+@media (max-width: 768px) {
+  .slide-2 {
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/hbc-website-8b832.firebasestorage.app/o/Slider%2FMobile%2FAnchored%20at%20Home%20(Mobile%20Video)%20(1).jpg?alt=media&token=79847a2f-d0a8-4c66-867d-06938d3c0997');
+  }
+}
+
+.slide-3 {
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/hbc-website-8b832.firebasestorage.app/o/Slider%2FDesktop%2FChristmas%20Eve%202025.jpg?alt=media&token=c2100c9d-a442-4d4f-b77d-68d5db7a15f2");
+}
+
+@media (max-width: 768px) {
   .slide-3 {
-      background-image: url("https://firebasestorage.googleapis.com/v0/b/hbc-website-8b832.firebasestorage.app/o/Slider%2FDesktop%2FChristmas%20Eve%202025.jpg?alt=media&token=c2100c9d-a442-4d4f-b77d-68d5db7a15f2");
-    }
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/hbc-website-8b832.firebasestorage.app/o/Slider%2FMobile%2FChristmas%20eve.jpg?alt=media&token=f55451d9-1323-4856-8904-dce3f7b8a37b');
+  }
+}
 
-    @media (max-width: 768px) {
-      .slide-3 {
-        background-image: url('https://firebasestorage.googleapis.com/v0/b/hbc-website-8b832.firebasestorage.app/o/Slider%2FMobile%2FChristmas%20eve.jpg?alt=media&token=f55451d9-1323-4856-8904-dce3f7b8a37b');
-      }
-    }
+/* =========================================================
+   BACKGROUND VIDEO
+   ========================================================= */
+.bg-video.desktop, .bg-video.mobile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
 
-  
-    
-    .bg-video.desktop, .bg-video.mobile {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-    }
+.bg-video.mobile {
+  display: none;
+}
 
-    .bg-video.mobile {
-      display: none;
-    }
+@media (max-width: 768px) {
+  .bg-video.desktop {
+    display: none;
+  }
+  .bg-video.mobile {
+    display: block;
+  }
+}
 
-    @media (max-width: 768px) {
-      .bg-video.desktop {
-        display: none;
-      }
-      .bg-video.mobile {
-        display: block;
-      }
-    }
+/* =========================================================
+   OVERLAY CONTENT
+   ========================================================= */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 2rem 3rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent 100%);
+  z-index: 2;
+}
 
-    .overlay {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 2rem 3rem 3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent 100%);
-      z-index: 2;
-    }
+.text-block {
+  text-align: left;
+  max-width: 50vw;
+}
 
-    .text-block {
-      text-align: left;
-      max-width: 50vw;
-    }
+.text-block h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.25rem 0;
+}
 
-    .text-block h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 0.25rem 0;
-    }
+.text-block p {
+  font-size: 1rem;
+  color: #ccc;
+  margin: 0.25rem 0;
+}
 
-    .text-block p {
-      font-size: 1rem;
-      color: #ccc;
-      margin: 0.25rem 0;
-    }
+/* =========================================================
+   LIVE BADGE
+   ========================================================= */
+.live-badge {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  background: rgba(255, 215, 0, 0.15);
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+  animation: glow 2s ease-in-out infinite;
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  text-align: center;
+  width: 220px;
+}
 
-    .live-badge {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: white;
-      background: rgba(255, 215, 0, 0.15);
-      border-radius: 999px;
-      padding: 0.3rem 1rem;
-      animation: glow 2s ease-in-out infinite;
-      position: absolute;
-      top: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 5;
-text-align:center;
-      width: 220px;
-    }
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 5px #ffd700; }
+  50% { text-shadow: 0 0 15px #ffd700; }
+}
 
-    @keyframes glow {
-      0%, 100% { text-shadow: 0 0 5px #ffd700; }
-      50% { text-shadow: 0 0 15px #ffd700; }
-    }
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.button-group {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  align-items: flex-end;
+}
 
-    .button-group {
-      display: flex;
-      gap: 1rem;
-      flex-direction: row;
-      align-items: flex-end;
-    }
+.button-group a {
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
 
-    .button-group a {
-      padding: 0.7rem 1.5rem;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
+.btn-primary {
+  background: white;
+  color: black;
+}
 
-    .btn-primary {
-      background: white;
-      color: black;
-    }
+.btn-primary:hover {
+  background: #ccc;
+}
 
-    .btn-primary:hover {
-      background: #ccc;
-    }
+.btn-outline {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+}
 
-    .btn-outline {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: white;
-    }
+.btn-outline:hover {
+  background: rgba(255,255,255,0.2);
+}
 
-    .btn-outline:hover {
-      background: rgba(255,255,255,0.2);
-    }
+/* =========================================================
+   BULLETS / PAGINATION
+   ========================================================= */
+.glide__bullets {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  padding: 0;
+  display: flex;
+  gap: 0.75rem;
+  z-index: 3;
+}
 
-    .glide__bullets {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: transparent;
-      padding: 0;
-      display: flex;
-      gap: 0.75rem;
-      z-index: 3;
-    }
+.glide__bullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-    .glide__bullet {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+.glide__bullet--active {
+  background: white;
+  width: 24px;
+  border-radius: 999px;
+}
 
-    .glide__bullet--active {
-      background: white;
-      width: 24px;
-      border-radius: 999px;
-    }
+/* =========================================================
+   ARROWS / CONTROLS (DEFAULT)
+   ========================================================= */
+.glide__arrows {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  transform: translateY(-50%);
+  z-index: 2;
+}
 
-    .glide__arrows {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 10px;
-      transform: translateY(-50%);
-      z-index: 2;
-    }
+.glide__arrow {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
 
-    .glide__arrow {
-      background: rgba(255,255,255,0.2);
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 20px;
-      color: white;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+.glide__arrow:hover {
+  background: rgba(255,255,255,0.4);
+}
 
-    .glide__arrow:hover {
-      background: rgba(255,255,255,0.4);
-    }
+/* =========================================================
+   ARROWS / CONTROLS (DESKTOP ENHANCEMENT)
+   - Bigger, darker, higher contrast on desktop
+   - Clean Elevation-style feel
+   ========================================================= */
+@media (min-width: 1024px) {
+   .glide__arrows {
+    padding: 0 32px;
+    z-index: 5;
+  }
 
-    @media (max-width: 768px) {
-      .glide,
-      .glide__slide {
-        height: 100vh;
-        min-height: 700px;
-      }
+  .glide__arrow {
+    width: 60px;
+    height: 88px;                 /* ⬅️ TALLER */
+    font-size: 26px;              /* ⬅️ BIGGER ARROW */
+    background: rgba(0, 0, 0, 0.65);
+    border-radius: 999px;         /* ⬅️ PILL SHAPE */
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.25s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+  }
 
-      .overlay {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 4rem 1rem 6rem;
-      }
+  .glide__arrow:hover {
+    background: rgba(0, 0, 0, 0.85);
+    transform: scale(1.12);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7);
+  }
+}
+  /* Optional: if your arrows are SVGs inside the button */
+  .glide__arrow svg {
+    width: 22px;
+    height: 22px;
+  }
+}
 
-      .text-block {
-        max-width: 100%;
-        margin-bottom: 1.5rem;
-        text-align: center;
-      }
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+@media (max-width: 768px) {
+  .glide,
+  .glide__slide {
+    height: 100vh;
+    min-height: 700px;
+  }
 
-      .text-block h1 {
-        font-size: 1.25rem;
-      }
+  .overlay {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 1rem 6rem;
+  }
 
-      .text-block p {
-        font-size: 0.95rem;
-      }
+  .text-block {
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
 
-      .button-group {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-      }
+  .text-block h1 {
+    font-size: 1.25rem;
+  }
 
-      .button-group a {
-        width: 90%;
-        font-size: 0.95rem;
-        padding: 0.75rem 1rem;
-      }
+  .text-block p {
+    font-size: 0.95rem;
+  }
 
-      .glide__bullets {
-        bottom: 1.5rem;
-      }
-    }
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .button-group a {
+    width: 90%;
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .glide__bullets {
+    bottom: 1.5rem;
+  }
+}
+ 
+   
   </style>
 </head>
 <body>
